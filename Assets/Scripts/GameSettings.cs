@@ -25,4 +25,9 @@ public class GameSettings : MonoBehaviour
         Debug.Log("Clicked Achievements");
     }
 
+    public void OpenAccount()
+    {
+        Debug.Log("Clicked Account");
+    }
+
 }
