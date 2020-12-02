@@ -12,7 +12,7 @@ public class AudioSpectrum : MonoBehaviour
     private void Update()
     {
         // get the data
-        AudioListener.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
+        //AudioListener.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
 
         // assign spectrum value
         // this "engine" focuses on the simplicity of other classes only..
@@ -21,6 +21,7 @@ public class AudioSpectrum : MonoBehaviour
         {
             spectrumValue = m_audioSpectrum[0] * 100;
         }
+
     }
 
     private void Start()
