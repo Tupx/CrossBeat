@@ -12,14 +12,14 @@ public class AudioSpectrum : MonoBehaviour
     private void Update()
     {
         // get the data
-        //AudioListener.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
+        AudioListener.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
 
         // assign spectrum value
         // this "engine" focuses on the simplicity of other classes only..
         // ..needing to retrieve one value (spectrumValue)
         if (m_audioSpectrum != null && m_audioSpectrum.Length > 0)
         {
-            spectrumValue = m_audioSpectrum[0] * 100;
+            spectrumValue = m_audioSpectrum[1] * 100;
         }
 
     }
