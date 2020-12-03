@@ -1,33 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSettings : MonoBehaviour
 { 
     public void PlayGame()
     {
         Debug.Log("Clicked Play");
+        SceneManager.LoadScene("MusicSelection");
     }
 
-    public static void ExitGame()
+    public void ExitGame()
     {
         Debug.Log("Exit Game");
+        Application.Quit();
     }
+
+    public void Back()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene - 1);
+    }
+
 
     public void  OpenSettings()
     {
         Debug.Log("Clicked Settings");
-        Application.Quit();
+        Toast.Instance.Show("Settings Coming Soon");
     }
 
     public void OpenAchievements()
     {
         Debug.Log("Clicked Achievements");
+        Toast.Instance.Show("Achievements Coming Soon");
     }
 
     public void OpenAccount()
     {
         Debug.Log("Clicked Account");
+        Toast.Instance.Show("Account Coming Soon");
     }
 
 }
