@@ -6,7 +6,10 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: FadeIn_Audio
+=======
+>>>>>>> 08bc420d3634acf055390c572d84c260d3ec6bbb
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
