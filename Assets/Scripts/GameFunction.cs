@@ -7,7 +7,39 @@ public class GameFunction : AudioSyncer
 {
 
     public GameObject[] pads;
+    public GameObject scoreText;
+    public GameObject comboText;
     private int picker;
+
+    public void calculateScore()
+    {
+        float currentScale = pads[picker].transform.localScale.x;
+        if (currentScale >= 4.5 && currentScale <= 5)
+        {
+            ///Debug.Log("Scale: (100)" + currentScale);
+            score += 100;
+            miss = false;
+        }
+        else if (currentScale >= 3 && currentScale <= 4)
+        {
+            ///Debug.Log("Scale: (50)" + currentScale);
+            score += 50;
+            miss = false;
+        }
+        else
+        {
+            ///Debug.Log("Scale: (miss)" + currentScale);
+            miss = true;
+            combo = 0;
+        }
+
+        if (!miss)
+        {
+            combo += 10;
+        }
+        scoreText.GetComponent<Text>().text = score.ToString();
+        comboText.GetComponent<Text>().text = combo.ToString();
+    }
 
     private IEnumerator MoveToScale(Vector2 _target)
     {
@@ -45,5 +77,10 @@ public class GameFunction : AudioSyncer
 
 	public Vector2 beatScale;
 	public Vector2 restScale;
+
+    private int score = 0;
+    private int combo = 0;
+    private bool miss = false;
+
 
 }
