@@ -1300,7 +1300,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ca75a324550a09d4ab802e3443773f31, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d6e1ff49b4df9f848b1a9569d88073fe, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1412,6 +1412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c612f39f456c32b43970495796c4c2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bias: 10
+  timeStep: 0.4
+  timeToBeat: 0.05
+  restSmoothTime: 1
   pads:
   - {fileID: 1264798810}
   - {fileID: 1986719749}
@@ -1422,11 +1426,8 @@ MonoBehaviour:
   - {fileID: 2106757141}
   - {fileID: 1557389758}
   - {fileID: 1309643143}
-  bias: 10
-  timeStep: 0.6
-  timeToBeat: 0.05
-  restSmoothTime: 1
-  color: {r: 0.16078427, g: 0.600043, b: 0.972549, a: 1}
+  beatScale: {x: 5, y: 5}
+  restScale: {x: 1, y: 1}
 --- !u!1 &910022394
 GameObject:
   m_ObjectHideFlags: 0

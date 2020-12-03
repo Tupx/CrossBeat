@@ -3,59 +3,47 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class GameFunction : MonoBehaviour
+public class GameFunction : AudioSyncer
 {
 
     public GameObject[] pads;
+    private int picker;
 
-	public float bias;
-	public float timeStep;
-	public float timeToBeat;
-	public float restSmoothTime;
-	public Color color;
-
-	private float m_previousAudioValue;
-	private float m_audioValue;
-	private float m_timer;
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator MoveToScale(Vector2 _target)
     {
-		// update audio value
-		m_previousAudioValue = m_audioValue;
-		m_audioValue = AudioSpectrum.spectrumValue;
+        Vector2 _curr = pads[picker].transform.localScale;
+        Vector2 _initial = _curr;
+        float _timer = 0;
 
-		// if audio value went below the bias during this frame
-		if (m_previousAudioValue > bias &&
-			m_audioValue <= bias)
-		{
-			// if minimum beat interval is reached
-			if (m_timer > timeStep)
-				OnBeat();
-		}
+        while (_curr != _target)
+        {
+            _curr = Vector2.Lerp(_initial, _target, _timer / timeToBeat);
+            _timer += Time.deltaTime;
 
-		// if audio value went above the bias during this frame
-		if (m_previousAudioValue <= bias &&
-			m_audioValue > bias)
-		{
-			// if minimum beat interval is reached
-			if (m_timer > timeStep)
-				OnBeat();
-		}
+            pads[picker].transform.localScale = _curr;
 
-		m_timer += Time.deltaTime;
+            yield return null;
+        }
 
+        m_isBeat = false;
+    }
+
+    public override void OnUpdate()
+	{
+		base.OnUpdate();
+	    if (m_isBeat) return;
+        pads[picker].transform.localScale = Vector2.Lerp(pads[picker].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
 	}
 
-    public virtual void OnBeat()
-    {
-		int picker = Random.Range(0,9);
-		int r = Random.Range(0, 255);
-		int g = Random.Range(0, 255);
-		int b = Random.Range(0, 255);
-		Debug.Log(r+","+ g + ","+ b + ",");
-		Image chosenObj = pads[picker].GetComponent<Image>();
-		///chosenObj.color = new Color32(r,g,b,255);
-		chosenObj.color = new Color32(10,100,110,255);
+	public override void OnBeat()
+	{
+		base.OnBeat();
+        picker = Random.Range(0,9);
+		StopCoroutine("MoveToScale");
+		StartCoroutine("MoveToScale", beatScale);
 	}
+
+	public Vector2 beatScale;
+	public Vector2 restScale;
+
 }
