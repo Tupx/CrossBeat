@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSettings : MonoBehaviour
-{ 
+{
+
+    public Animator musicAnimation;
+
     public void PlayGame()
     {
         Debug.Log("Clicked Play");
-        SceneManager.LoadScene("MusicSelection");
+        StartCoroutine(FadeAudioScene("MusicSelection"));
     }
 
     public void ExitGame()
@@ -49,6 +52,15 @@ public class GameSettings : MonoBehaviour
     public void FinalPlayGame()
     {
         Toast.Instance.Show("G na XD");
+    }
+
+
+    // Other Functions
+    IEnumerator FadeAudioScene(string scene)
+    {
+        musicAnimation.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(scene);
     }
 
 }
