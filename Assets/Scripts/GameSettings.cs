@@ -10,7 +10,6 @@ public class GameSettings : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Clicked Play");
         StartCoroutine(FadeAudioScene("MusicSelection"));
     }
 
@@ -22,25 +21,22 @@ public class GameSettings : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("MainScene");
     }
 
 
     public void  OpenSettings()
     {
-        Debug.Log("Clicked Settings");
         Toast.Instance.Show("Settings Coming Soon");
     }
 
     public void OpenAchievements()
     {
-        Debug.Log("Clicked Achievements");
-        Toast.Instance.Show("Achievements Coming Soon");
+        SceneManager.LoadScene("Scoreboard");
     }
 
     public void OpenAccount()
     {
-        Debug.Log("Clicked Account");
         Toast.Instance.Show("Account Coming Soon");
     }
 
@@ -51,7 +47,8 @@ public class GameSettings : MonoBehaviour
 
     public void FinalPlayGame()
     {
-        Toast.Instance.Show("G na XD");
+        /// FadeAudioScene("Game");
+        SceneManager.LoadScene("Game");
     }
 
 
