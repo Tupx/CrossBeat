@@ -48,7 +48,7 @@ public class GameSettings : MonoBehaviour
     public void FinalPlayGame()
     {
         /// FadeAudioScene("Game");
-        SceneManager.LoadScene("Game");
+        StartCoroutine(FadeAudioScene("Game"));
     }
 
 
