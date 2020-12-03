@@ -19,7 +19,7 @@ public class GameSettings : MonoBehaviour
 
     public void Back()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 
@@ -39,6 +39,16 @@ public class GameSettings : MonoBehaviour
     {
         Debug.Log("Clicked Account");
         Toast.Instance.Show("Account Coming Soon");
+    }
+
+    public void ComingSoon()
+    {
+        Toast.Instance.Show("Coming Soon");
+    }
+
+    public void FinalPlayGame()
+    {
+        Toast.Instance.Show("G na XD");
     }
 
 }
