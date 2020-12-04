@@ -9,11 +9,13 @@ public class GameFunction : AudioSyncer
     public GameObject[] pads;
     public GameObject scoreText;
     public GameObject comboText;
-    private int picker;
+
+    Queue<int> picker = new Queue<int>();
+    private int picked;
 
     public void calculateScore()
     {
-        float currentScale = pads[picker].transform.localScale.x;
+        float currentScale = pads[picked].transform.localScale.x;
         if (currentScale >= 4.5 && currentScale <= 5)
         {
             ///Debug.Log("Scale: (100)" + currentScale);
@@ -43,7 +45,7 @@ public class GameFunction : AudioSyncer
 
     private IEnumerator MoveToScale(Vector2 _target)
     {
-        Vector2 _curr = pads[picker].transform.localScale;
+        Vector2 _curr = pads[picked].transform.localScale;
         Vector2 _initial = _curr;
         float _timer = 0;
 
@@ -52,7 +54,7 @@ public class GameFunction : AudioSyncer
             _curr = Vector2.Lerp(_initial, _target, _timer / timeToBeat);
             _timer += Time.deltaTime;
 
-            pads[picker].transform.localScale = _curr;
+            pads[picked].transform.localScale = _curr;
 
             yield return null;
         }
@@ -64,14 +66,23 @@ public class GameFunction : AudioSyncer
 	{
 		base.OnUpdate();
 	    if (m_isBeat) return;
-        pads[picker].transform.localScale = Vector2.Lerp(pads[picker].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
+        pads[picked].transform.localScale = Vector2.Lerp(pads[picked].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
 	}
 
 	public override void OnBeat()
 	{
 		base.OnBeat();
-        picker = Random.Range(0,9);
-		StopCoroutine("MoveToScale");
+
+        for (int i = 0; i < 2; i++)
+            picker.Enqueue(Random.Range(0, 9));
+
+        int x = picker.Dequeue();
+        pads[x].GetComponent<Image>().color = Color.white;
+        picked = x;
+
+        pads[picker.Peek()].GetComponent<Image>().color = Color.green;
+
+        StopCoroutine("MoveToScale");
 		StartCoroutine("MoveToScale", beatScale);
 	}
 

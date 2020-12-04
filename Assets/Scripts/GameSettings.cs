@@ -7,6 +7,7 @@ public class GameSettings : MonoBehaviour
 {
 
     public Animator musicAnimation;
+    public AudioSource GameMainSource;
 
     public void PlayGame()
     {
@@ -49,6 +50,22 @@ public class GameSettings : MonoBehaviour
     {
         /// FadeAudioScene("Game");
         StartCoroutine(FadeAudioScene("Game"));
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 1)
+        {
+            GameMainSource.Pause();
+            Debug.Log("Pause");
+            Time.timeScale = 0;
+        } 
+        else
+        {
+            Debug.Log("Resume");
+            GameMainSource.Play();
+            Time.timeScale = 1;
+        }
     }
 
 
