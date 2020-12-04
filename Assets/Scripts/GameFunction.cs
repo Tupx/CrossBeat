@@ -12,50 +12,46 @@ public class GameFunction : AudioSyncer
 
     Queue<int> picker = new Queue<int>();
     private int picked;
-    private float currentScale;
 
     public void calculateScore()
     {
-        currentScale = pads[picked].transform.localScale.x;
-        
-        if(currentScale >= 1 && currentScale < 3)
+        float currentScale = pads[picked].transform.localScale.x;
+        if (currentScale >= 4.5 && currentScale <= 5)
         {
-            combo = 0;
-        } 
+            ///Debug.Log("Scale: (100)" + currentScale);
+            score += 100;
+            miss = false;
+        }
+        else if (currentScale >= 3 && currentScale <= 4)
+        {
+            ///Debug.Log("Scale: (50)" + currentScale);
+            score += 50;
+            miss = false;
+        }
         else
         {
-            if (currentScale > 4.5 && currentScale <= 5)
-            {
-                ///Debug.Log("Scale: (100)" + currentScale);
-                score += 5;
-                combo += 5;
-                miss = false;
-            }
-            else if (currentScale >= 3 && currentScale < 4.5)
-            {
-                ///Debug.Log("Scale: (50)" + currentScale);
-                score += 3;
-                combo += 3;
-                miss = false;
-            }
-
-            scoreText.GetComponent<Text>().text = score.ToString();
-            comboText.GetComponent<Text>().text = combo.ToString();
+            ///Debug.Log("Scale: (miss)" + currentScale);
+            miss = true;
+            combo = 0;
         }
 
+        if (!miss)
+        {
+            combo += 10;
+        }
+        scoreText.GetComponent<Text>().text = score.ToString();
+        comboText.GetComponent<Text>().text = combo.ToString();
     }
 
     private IEnumerator MoveToScale(Vector2 _target)
     {
         Vector2 _curr = pads[picked].transform.localScale;
         Vector2 _initial = _curr;
-
         float _timer = 0;
-  
+
         while (_curr != _target)
         {
             _curr = Vector2.Lerp(_initial, _target, _timer / timeToBeat);
-            
             _timer += Time.deltaTime;
 
             pads[picked].transform.localScale = _curr;
@@ -64,7 +60,6 @@ public class GameFunction : AudioSyncer
         }
 
         m_isBeat = false;
-
     }
 
     public override void OnUpdate()
@@ -72,15 +67,14 @@ public class GameFunction : AudioSyncer
 		base.OnUpdate();
 	    if (m_isBeat) return;
         pads[picked].transform.localScale = Vector2.Lerp(pads[picked].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
-
-        
-    }
+	}
 
 	public override void OnBeat()
 	{
 		base.OnBeat();
 
-        picker.Enqueue(Random.Range(0, 9));
+        for (int i = 0; i < 2; i++)
+            picker.Enqueue(Random.Range(0, 9));
 
         int x = picker.Dequeue();
         pads[x].GetComponent<Image>().color = Color.white;
@@ -92,12 +86,7 @@ public class GameFunction : AudioSyncer
 		StartCoroutine("MoveToScale", beatScale);
 	}
 
-    public void Start()
-    {
-        picker.Enqueue(Random.Range(0, 9));
-    }
-
-    public Vector2 beatScale;
+	public Vector2 beatScale;
 	public Vector2 restScale;
 
     private int score = 0;
