@@ -19,13 +19,13 @@ public class GameFunction : AudioSyncer
         if (currentScale >= 4.5 && currentScale <= 5)
         {
             ///Debug.Log("Scale: (100)" + currentScale);
-            score += 100;
+            score += 10;
             miss = false;
         }
         else if (currentScale >= 3 && currentScale <= 4)
         {
             ///Debug.Log("Scale: (50)" + currentScale);
-            score += 50;
+            score += 5;
             miss = false;
         }
         else
@@ -37,7 +37,7 @@ public class GameFunction : AudioSyncer
 
         if (!miss)
         {
-            combo += 10;
+            combo += 3;
         }
         scoreText.GetComponent<Text>().text = score.ToString();
         comboText.GetComponent<Text>().text = combo.ToString();
