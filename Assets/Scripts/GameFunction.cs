@@ -76,7 +76,7 @@ public class GameFunction : AudioSyncer
 
         if (!gameAudioSource.isPlaying)
         {
-            SceneManager.LoadScene("Scoreboard");
+            SceneManager.LoadScene("Scoring");
         }
     }
 
