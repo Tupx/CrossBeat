@@ -2675,7 +2675,7 @@ MonoBehaviour:
   bias: 20
   timeStep: 0.45
   timeToBeat: 0.05
-  restSmoothTime: 6
+  restSmoothTime: 4
   pads:
   - {fileID: 518008275}
   - {fileID: 1591225378}
@@ -2689,8 +2689,6 @@ MonoBehaviour:
   scoreText: {fileID: 882369010}
   comboText: {fileID: 1222950680}
   gameAudioSource: {fileID: 1382680416}
-  title: {fileID: 1633307910}
-  singer: {fileID: 1032617302}
   beatScale: {x: 7, y: 7}
   restScale: {x: 1, y: 1}
 --- !u!114 &1382680415
@@ -2715,7 +2713,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 942e41d3ef142f24c8103d577553ccaa, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
