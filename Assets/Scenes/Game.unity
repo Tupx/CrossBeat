@@ -2675,7 +2675,7 @@ MonoBehaviour:
   bias: 20
   timeStep: 0.45
   timeToBeat: 0.05
-  restSmoothTime: 6
+  restSmoothTime: 5
   pads:
   - {fileID: 518008275}
   - {fileID: 1591225378}
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   gameAudioSource: {fileID: 1382680416}
   title: {fileID: 1633307910}
   singer: {fileID: 1032617302}
-  beatScale: {x: 7, y: 7}
+  beatScale: {x: 5, y: 5}
   restScale: {x: 1, y: 1}
 --- !u!114 &1382680415
 MonoBehaviour:
