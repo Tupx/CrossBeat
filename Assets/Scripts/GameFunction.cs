@@ -11,6 +11,9 @@ public class GameFunction : AudioSyncer
     public GameObject comboText;
     public AudioSource gameAudioSource;
 
+    public GameObject title;
+    public GameObject singer;
+
     Queue<int> picker = new Queue<int>();
     private int picked;
 
@@ -91,18 +94,16 @@ public class GameFunction : AudioSyncer
 		StartCoroutine("MoveToScale", beatScale);
 	}
 
-/*
+
     public void Start()
     {
         gameAudioSource.clip = MusicSelection.selectedAudio;
         gameAudioSource.Play();
-    }
 
-    public void Awake()
-    {
-        gameAudioSource.clip = MusicSelection.selectedAudio;
-        gameAudioSource.Play();
-    }*/
+        title.GetComponent<Text>().text = MusicSelection.selectedTitle;
+        singer.GetComponent<Text>().text = MusicSelection.selectedSinger;
+
+    }
 
     public Vector2 beatScale;
 	public Vector2 restScale;
