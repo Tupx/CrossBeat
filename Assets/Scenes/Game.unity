@@ -2688,6 +2688,7 @@ MonoBehaviour:
   - {fileID: 520729121}
   scoreText: {fileID: 882369010}
   comboText: {fileID: 1222950680}
+  gameAudioSource: {fileID: 1382680416}
   beatScale: {x: 7, y: 7}
   restScale: {x: 1, y: 1}
 --- !u!114 &1382680415
@@ -2712,7 +2713,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ecad6ac7bbeefa64c9c45c613e58d820, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2826,6 +2827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAnimation: {fileID: 0}
   GameMainSource: {fileID: 0}
+  selectedAudioClip: {fileID: 0}
 --- !u!1 &1433761217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,6 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAnimation: {fileID: 0}
   GameMainSource: {fileID: 0}
+  selectedAudioClip: {fileID: 0}
 --- !u!1 &1721355744
 GameObject:
   m_ObjectHideFlags: 0
