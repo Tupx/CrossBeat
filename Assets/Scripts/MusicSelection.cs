@@ -41,9 +41,9 @@ public class MusicSelection : MonoBehaviour
     {
 
         GameObject musicItemTemplate = transform.GetChild(0).gameObject;
+
         GameObject instanceObj;
         int musicCount = allMusics.Length;
-
 
         for (int i = 0; i < musicCount; i++)
         {
@@ -51,29 +51,29 @@ public class MusicSelection : MonoBehaviour
             instanceObj.transform.GetChild(0).GetComponent<Text>().text = allMusics[i].Title;
             instanceObj.transform.GetChild(1).GetComponent<Text>().text = allMusics[i].Author;
 
-            if(allMusics[i].Difficulty == 1)
+            if (allMusics[i].Difficulty == 1)
             {
-                instanceObj.transform.GetChild(4).GetComponent<RawImage>().enabled = true;
-                instanceObj.transform.GetChild(5).GetComponent<RawImage>().enabled = false;
-                instanceObj.transform.GetChild(6).GetComponent<RawImage>().enabled = false;
-            } 
-            else if(allMusics[i].Difficulty == 2)
+                instanceObj.transform.GetChild(4).GetComponent<Image>().enabled = true;
+                instanceObj.transform.GetChild(5).GetComponent<Image>().enabled = false;
+                instanceObj.transform.GetChild(6).GetComponent<Image>().enabled = false;
+            }
+            else if (allMusics[i].Difficulty == 2)
             {
-                instanceObj.transform.GetChild(4).GetComponent<RawImage>().enabled = true;
-                instanceObj.transform.GetChild(5).GetComponent<RawImage>().enabled = true;
-                instanceObj.transform.GetChild(6).GetComponent<RawImage>().enabled = false;
+                instanceObj.transform.GetChild(4).GetComponent<Image>().enabled = true;
+                instanceObj.transform.GetChild(5).GetComponent<Image>().enabled = true;
+                instanceObj.transform.GetChild(6).GetComponent<Image>().enabled = false;
             }
             else if (allMusics[i].Difficulty == 3)
             {
-                instanceObj.transform.GetChild(4).GetComponent<RawImage>().enabled = true;
-                instanceObj.transform.GetChild(5).GetComponent<RawImage>().enabled = true;
-                instanceObj.transform.GetChild(6).GetComponent<RawImage>().enabled = true;
+                instanceObj.transform.GetChild(4).GetComponent<Image>().enabled = true;
+                instanceObj.transform.GetChild(5).GetComponent<Image>().enabled = true;
+                instanceObj.transform.GetChild(6).GetComponent<Image>().enabled = true;
             }
             else
             {
-                instanceObj.transform.GetChild(4).GetComponent<RawImage>().enabled = false;
-                instanceObj.transform.GetChild(5).GetComponent<RawImage>().enabled = false;
-                instanceObj.transform.GetChild(6).GetComponent<RawImage>().enabled = false;
+                instanceObj.transform.GetChild(4).GetComponent<Image>().enabled = false;
+                instanceObj.transform.GetChild(5).GetComponent<Image>().enabled = false;
+                instanceObj.transform.GetChild(6).GetComponent<Image>().enabled = false;
             }
 
             instanceObj.GetComponent<Button>().AddEventListener(i, ItemClicked);
@@ -84,6 +84,7 @@ public class MusicSelection : MonoBehaviour
 
     public void ItemClicked(int itemIndex)
     {
+        /*  Debug.Log(itemIndex);*/
         mainAudioSource.Stop();
         SelectedTitle.GetComponent<Text>().text = allMusics[itemIndex].Title;
         SelectedAuthor.GetComponent<Text>().text = allMusics[itemIndex].Author;
