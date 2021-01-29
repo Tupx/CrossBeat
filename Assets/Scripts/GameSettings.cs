@@ -8,7 +8,6 @@ public class GameSettings : MonoBehaviour
 
     public Animator musicAnimation;
     public AudioSource GameMainSource;
-    public AudioClip selectedAudioClip;
 
     public void PlayGame()
     {
@@ -52,7 +51,6 @@ public class GameSettings : MonoBehaviour
         /// FadeAudioScene("Game");
         StartCoroutine(FadeAudioScene("Game"));
     }
-
 
     public void PauseGame()
     {

@@ -9,11 +9,9 @@ public class GameFunction : AudioSyncer
     public GameObject[] pads;
     public GameObject scoreText;
     public GameObject comboText;
-    public AudioSource gameAudioSource;
 
     Queue<int> picker = new Queue<int>();
     private int picked;
-
 
     public void calculateScore()
     {
@@ -69,11 +67,9 @@ public class GameFunction : AudioSyncer
 		base.OnUpdate();
 	    if (m_isBeat) return;
         pads[picked].transform.localScale = Vector2.Lerp(pads[picked].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
+	}
 
-        
-    }
-
-    public override void OnBeat()
+	public override void OnBeat()
 	{
 		base.OnBeat();
 
@@ -84,27 +80,13 @@ public class GameFunction : AudioSyncer
         pads[x].GetComponent<Image>().color = Color.white;
         picked = x;
 
-        Color custom = new Color32(184, 75, 255,200);
-        pads[picker.Peek()].GetComponent<Image>().color = custom;
+        pads[picker.Peek()].GetComponent<Image>().color = Color.green;
 
         StopCoroutine("MoveToScale");
 		StartCoroutine("MoveToScale", beatScale);
 	}
 
-/*
-    public void Start()
-    {
-        gameAudioSource.clip = MusicSelection.selectedAudio;
-        gameAudioSource.Play();
-    }
-
-    public void Awake()
-    {
-        gameAudioSource.clip = MusicSelection.selectedAudio;
-        gameAudioSource.Play();
-    }*/
-
-    public Vector2 beatScale;
+	public Vector2 beatScale;
 	public Vector2 restScale;
 
     private int score = 0;
