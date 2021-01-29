@@ -35,6 +35,7 @@ public class MusicSelection : MonoBehaviour
     public GameObject SelectedDifficultyB;
     public GameObject SelectedDifficultyC;
     public AudioSource mainAudioSource;
+    public static AudioClip selectedAudio { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -116,5 +117,7 @@ public class MusicSelection : MonoBehaviour
 
         mainAudioSource.clip = allMusics[itemIndex].audio;
         mainAudioSource.Play();
+
+        selectedAudio = allMusics[itemIndex].audio;
     }
 }
