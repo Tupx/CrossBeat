@@ -285,7 +285,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 521971497}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: ComingSoon
+        m_MethodName: FinalPlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -572,9 +572,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 521971497}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: FinalPlayGame
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -660,6 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAnimation: {fileID: 0}
   GameMainSource: {fileID: 0}
+  selectedAudioClip: {fileID: 0}
 --- !u!114 &521971498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,7 +891,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 521971497}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: Back
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1239,9 +1240,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 521971497}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: FinalPlayGame
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

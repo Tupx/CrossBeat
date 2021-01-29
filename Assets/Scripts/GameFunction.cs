@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFunction : AudioSyncer
 {
@@ -73,7 +74,10 @@ public class GameFunction : AudioSyncer
 	    if (m_isBeat) return;
         pads[picked].transform.localScale = Vector2.Lerp(pads[picked].transform.localScale, restScale, restSmoothTime * Time.deltaTime);
 
-        
+        if (!gameAudioSource.isPlaying)
+        {
+            SceneManager.LoadScene("Scoreboard");
+        }
     }
 
     public override void OnBeat()
