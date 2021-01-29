@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFunction : AudioSyncer
 {
@@ -10,6 +11,9 @@ public class GameFunction : AudioSyncer
     public GameObject scoreText;
     public GameObject comboText;
     public AudioSource gameAudioSource;
+
+    public GameObject title;
+    public GameObject singer;
 
     Queue<int> picker = new Queue<int>();
     private int picked;
@@ -91,18 +95,22 @@ public class GameFunction : AudioSyncer
 		StartCoroutine("MoveToScale", beatScale);
 	}
 
-/*
     public void Start()
     {
-        gameAudioSource.clip = MusicSelection.selectedAudio;
+        /*gameAudioSource.clip = MusicSelection.selectedAudio;
         gameAudioSource.Play();
+
+        title.GetComponent<Text>().text = MusicSelection.selectedTitle;
+        singer.GetComponent<Text>().text = MusicSelection.selectedAuthor;*/
     }
 
-    public void Awake()
+    public void Update()
     {
-        gameAudioSource.clip = MusicSelection.selectedAudio;
-        gameAudioSource.Play();
-    }*/
+        if (!gameAudioSource.isPlaying)
+        {
+            SceneManager.LoadScene("Scoring");
+        }
+    }
 
     public Vector2 beatScale;
 	public Vector2 restScale;

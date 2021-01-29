@@ -35,7 +35,11 @@ public class MusicSelection : MonoBehaviour
     public GameObject SelectedDifficultyB;
     public GameObject SelectedDifficultyC;
     public AudioSource mainAudioSource;
+
     public static AudioClip selectedAudio { get; private set; }
+    public static String selectedTitle { get; private set; }
+    public static String selectedAuthor { get; private set; }
+    public static int selectedDifficulty { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -119,5 +123,8 @@ public class MusicSelection : MonoBehaviour
         mainAudioSource.Play();
 
         selectedAudio = allMusics[itemIndex].audio;
+        selectedTitle = allMusics[itemIndex].Title;
+        selectedAuthor = allMusics[itemIndex].Author;
+        selectedDifficulty = allMusics[itemIndex].Difficulty;
     }
 }
