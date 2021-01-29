@@ -15,6 +15,7 @@ public class GameFunction : AudioSyncer
     public GameObject title;
     public GameObject singer;
 
+
     Queue<int> picker = new Queue<int>();
     private int picked;
 
@@ -77,6 +78,9 @@ public class GameFunction : AudioSyncer
         if (!gameAudioSource.isPlaying)
         {
             SceneManager.LoadScene("Scoring");
+            PlayerPrefs.SetString("score", scoreText.GetComponent<Text>().text);
+            PlayerPrefs.SetString("combo", comboText.GetComponent<Text>().text);
+            PlayerPrefs.Save();
         }
     }
 
